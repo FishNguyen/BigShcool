@@ -23,7 +23,7 @@ namespace BigSchool.Models
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Attendace>()
+            modelBuilder.Entity<Attendance>()
                 .HasRequired(a => a.Course)
                 .WithMany()
                 .WillCascadeOnDelete(false);
