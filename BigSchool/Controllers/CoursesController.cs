@@ -21,6 +21,7 @@ namespace BigSchool.Controllers
         // GET: Courses
         [Authorize]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(CourseViewModel viewModel)
         {
             if(!ModelState.IsValid)
@@ -37,7 +38,7 @@ namespace BigSchool.Controllers
             };
             _dbContext.Courses.Add(course);
             _dbContext.SaveChanges();
-            return RedirectToAction("Create", "Courses");
+            return RedirectToAction("Index", "Home");
         }
     }
 }
