@@ -8,8 +8,8 @@ using System.Web.ModelBinding;
 using Microsoft.AspNet.Identity;
 using System.Data.Entity;
 using System.Web.Mvc;
-using System.Web.Http.HttpDeleteAttribute;
 using BigSchool;
+using BigSchool.Models;
 
 namespace BigSchool.Controllers.API
 {
@@ -20,11 +20,11 @@ namespace BigSchool.Controllers.API
         {
             _dbContext = new ApplicationDbContext();
         }
-        [HttpDelete]
+        [System.Web.Http.HttpDelete]
         public IHttpActionResult Cancel(int id)
         {
             var userId = User.Identity.GetUserId();
-            var course = _dbContext.Courses.Singel(c => c.Id == id && c.LecturerId == userId);
+            var course = _dbContext.Courses.Single(c => c.Id == id && c.LecturerId == userId);
             if (course.IsCanceled)
                 return NotFound();
             course.IsCanceled = true;
