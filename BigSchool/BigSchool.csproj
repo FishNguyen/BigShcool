@@ -207,6 +207,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\API\CoursesController.cs" />
     <Compile Include="Controllers\AttendancesController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\FollowingsController.cs" />
@@ -233,17 +234,9 @@
     <Compile Include="Migrations\202006071326233_AddNameColumnToApplicationUser.Designer.cs">
       <DependentUpon>202006071326233_AddNameColumnToApplicationUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202006080101081_CapNhat.cs" />
-    <Compile Include="Migrations\202006080101081_CapNhat.Designer.cs">
-      <DependentUpon>202006080101081_CapNhat.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202006080108075_addAttendance.cs" />
-    <Compile Include="Migrations\202006080108075_addAttendance.Designer.cs">
-      <DependentUpon>202006080108075_addAttendance.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202006140840290_AddFollowingsTable.cs" />
-    <Compile Include="Migrations\202006140840290_AddFollowingsTable.Designer.cs">
-      <DependentUpon>202006140840290_AddFollowingsTable.cs</DependentUpon>
+    <Compile Include="Migrations\202006141149281_AddAttendance.cs" />
+    <Compile Include="Migrations\202006141149281_AddAttendance.Designer.cs">
+      <DependentUpon>202006141149281_AddAttendance.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -320,6 +313,8 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Courses\Create.cshtml" />
+    <Content Include="Views\Courses\Attending.cshtml" />
+    <Content Include="Views\Courses\Mine.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -347,14 +342,8 @@
     <EmbeddedResource Include="Migrations\202006071326233_AddNameColumnToApplicationUser.resx">
       <DependentUpon>202006071326233_AddNameColumnToApplicationUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202006080101081_CapNhat.resx">
-      <DependentUpon>202006080101081_CapNhat.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202006080108075_addAttendance.resx">
-      <DependentUpon>202006080108075_addAttendance.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202006140840290_AddFollowingsTable.resx">
-      <DependentUpon>202006140840290_AddFollowingsTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202006141149281_AddAttendance.resx">
+      <DependentUpon>202006141149281_AddAttendance.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

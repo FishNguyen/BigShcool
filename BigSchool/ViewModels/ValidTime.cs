@@ -8,7 +8,7 @@ using System.Globalization;
 
 namespace BigSchool.ViewModels
 {
-    public class ValidTime : Attribute
+    public class ValidTime : ValidationAttribute
     {
         public   bool IsValid(object value)
         {
