@@ -209,9 +209,11 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AttendancesController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
+    <Compile Include="Controllers\FollowingsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="DTOs\AttendanceDto.cs" />
+    <Compile Include="DTOs\FollowingDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -239,6 +241,10 @@
     <Compile Include="Migrations\202006080108075_addAttendance.Designer.cs">
       <DependentUpon>202006080108075_addAttendance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006140840290_AddFollowingsTable.cs" />
+    <Compile Include="Migrations\202006140840290_AddFollowingsTable.Designer.cs">
+      <DependentUpon>202006140840290_AddFollowingsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -250,6 +256,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\CoursesViewModel.cs" />
     <Compile Include="ViewModels\CourseViewModel.cs" />
     <Compile Include="ViewModels\ValidTime.cs" />
     <Compile Include="ViewModels\FutureDate.cs" />
@@ -317,6 +324,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Attendances\" />
+    <Folder Include="Views\Followings\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -344,6 +352,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006080108075_addAttendance.resx">
       <DependentUpon>202006080108075_addAttendance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006140840290_AddFollowingsTable.resx">
+      <DependentUpon>202006140840290_AddFollowingsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
