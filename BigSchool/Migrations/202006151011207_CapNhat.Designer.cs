@@ -7,13 +7,13 @@ namespace BigSchool.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class PopulateCategoryTable : IMigrationMetadata
+    public sealed partial class CapNhat : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(PopulateCategoryTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CapNhat));
         
         string IMigrationMetadata.Id
         {
-            get { return "202006010259385_PopulateCategoryTable"; }
+            get { return "202006151011207_CapNhat"; }
         }
         
         string IMigrationMetadata.Source

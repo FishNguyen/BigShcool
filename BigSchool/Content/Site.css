@@ -22,6 +22,17 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.navbar-inverse{
+    background-color:darkkhaki;
+    border-color:aqua;
+}
+.navbar-inverse .navbar-nav > li >a{
+    color:darkgoldenrod;
+}
+.navbar-inverse .navbar-brand{
+    color:darkgoldenrod;
+}
 /* course layout*/
 .course{
     list-style:none;

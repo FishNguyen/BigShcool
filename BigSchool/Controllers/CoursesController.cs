@@ -82,8 +82,8 @@ namespace BigSchool.Controllers
             var viewModel = new CourseViewModel
             {
                 Categories = _dbContext.Categories.ToList(),
-                Date = course.DateTime.ToString("dd/M/yyyy"),
-                Time = course.DateTime.ToString("HH/mm"),
+                Date = course.DateTime.ToString("dd/MM/yyyy"),
+                Time = course.DateTime.ToString("HH:mm"),
                 Category = course.CategoryId,
                 Place = course.Place,
                 Heading = "Add Course",
@@ -119,7 +119,7 @@ namespace BigSchool.Controllers
             course.DateTime = viewModel.GetDateTIme();
             course.CategoryId = viewModel.Category;
             _dbContext.SaveChanges();
-            return RedirectToAction("index", "Home");
+            return RedirectToAction("Index", "Home");
         }
     }
 }
