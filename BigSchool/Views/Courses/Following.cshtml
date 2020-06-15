@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BigSchool.Models.Following>
+﻿@model IEnumerable<BigSchool.Models.Course>
 
 
 @{
@@ -6,14 +6,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Lecture I'm Flowing</h2>
+<h2>Lecture I'm Following</h2>
 
 <ul>
 
     @foreach (var viewModel in @Model)
     {
         <li>
-            <span style="font-weight:bold">@viewModel.Lecturer</span>
+            <span style="font-weight:bold">@viewModel.Lecturer.Name</span>
             <button class="btn btn-info btn-sm js-toggle-follow" data-user-id="@viewModel.Id">
                 Following
             </button>
@@ -26,7 +26,8 @@
 
 @section scripts
 {
-    <script>$(document).ready(function () {
+    <script>
+    $(document).ready(function () {
             $(".js-toggle-follow").click(function (e) {
                 var button = $(e.target);
                 if (button.hasClass("btn-default")) {
