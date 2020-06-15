@@ -1,19 +1,13 @@
 ﻿@model  BigSchool.ViewModels.CoursesViewModel
+@using Microsoft.AspNet.Identity;
+@using BigSchool.Models;
 @{
     ViewBag.Title = "Attending";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<h2>Attending</h2>
 
-<!--<div class="row">
-    <ul>
-        @foreach (var course in Model.UpcommingCourses)
-        {
-            <li>
-                @course.DateTime - @course.Lecturer.Name
-            </li>
-        }
-    </ul>
-</div>-->
+
 <ul class="course">
     @foreach (var course in Model.UpcommingCourses)
     {
@@ -31,7 +25,7 @@
                     @course.Lecturer.Name
                     @if (Model.ShowAction)
                     {
-                        <button class="btn btn-default btn-sm js-toggle-follow" data-user-id="@course.LecturerId">
+                        <button class="btn btn-link btn-sm js-toggle-follow" data-user-id="@course.LecturerId">
                             Follow
                         </button>
                     }
@@ -41,43 +35,88 @@
                 </span>
                 @if (Model.ShowAction)
                 {
-                    <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Going? </button>
+                    var User_ID = User.Identity.GetUserId();
+                    ApplicationDbContext _dbContext = new ApplicationDbContext();
+                    bool isGoing = _dbContext.Attendances.Any(a => a.CourseId == course.Id && a.AttendeeId == User_ID);
+                    if (isGoing)
+                    {
+                        <button data-course-id="@course.Id" class="btn btn-info btn-sm js-toggle-attendance">Going</button>
+                    }
+                    else
+                    {
+                        <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Going</button>
+                    }
                 }
             </div>
         </li>
     }
 </ul>
-<!--@section scripts
+@section scripts
 {
     <script>
         $(document).ready(function () {
             $(".js-toggle-attendance").click(function (e) {
                 var button = $(e.target);
-                $.post("/api/attendances", { courseId: button.attr("data-course-id") })
-                    .done(function () {
-                        button
-                            .removeClass("btn-default")
-                            .addClass("btn-info")
-                            .text("Going");
+                if (button.hasClass("btn-default")) {
+                    $.post("/api/attendances", { courseId: button.attr("data-course-id") })
+                        .done(function () {
+                            button
+                                .removeClass("btn-default")
+                                .addClass("btn-info")
+                                .text("Going");
+                        })
+                        .fail(function () {
+                            alert("Có gì đó sai sai!");
+                        });
+
+                }
+                else {
+                    $.ajax({
+                        url: "/api/attendances/" + button.attr("data-course-id"),
+                        method: "DELETE"
                     })
-                    .fail(function () {
-                        alert("Something failed!");
-                    });
+                        .done(function () {
+                            button
+                                .removeClass("btn-info")
+                                .addClass("btn-default")
+                                .text("Going?");
+                        })
+                        .fail(function () {
+                            alert("Có gì đó sai sai!");
+                        });
+                }
             });
 
-            $(".js.toggle.follow").click(function (e) {
+            $(".js-toggle-follow").click(function (e) {
                 var button = $(e.target);
-                $.post("/api/followings", { followeeId: button.attr("data-user-id") })
-                    .done(function () {
-                        button.text("Following");
+                if (button.hasClass("btn-default")) {
+                    $.post("/api/followings", { followeeId: button.attr("data-user-id") })
+                        .done(function () {
+                            button.text("Following");
+                        })
+                        .fail(function () {
+                            alert("Có gì đó không đúng")
+                        })
+                }
+                else {
+                    $.ajax({
+                        url: "/api/followings/" + button.attr("data-user-id"),
+                        method: "DELETE"
                     })
-                    .fail(function () {
-                        alert("Có gì đó không đúng")
-                    })
+                        .done(function () {
+                            button
+                                .addClass("btn-default")
+                                .text("Follow");
+                        })
+                        .fail(function () {
+                            alert("Sai gì đó thì phải!");
+                        });
+                }
+               
             })
         });
     </script>
-}-->
+}
 <div class="jumbotron">
     <h1>ASP.NET</h1>
     <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>

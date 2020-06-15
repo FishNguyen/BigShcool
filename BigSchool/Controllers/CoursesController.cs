@@ -20,6 +20,16 @@ namespace BigSchool.Controllers
         }
         // GET: Courses
         [Authorize]
+        public ActionResult Create()
+        {
+            var viewModel = new CourseViewModel
+            {
+                Categories = _dbContext.Categories.ToList(),
+                Heading = "Add Course"
+            };
+            return View(viewModel);
+        }
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(CourseViewModel viewModel)
@@ -38,7 +48,7 @@ namespace BigSchool.Controllers
             };
             _dbContext.Courses.Add(course);
             _dbContext.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Mine", "Course");
         }
 
         [Authorize]
@@ -86,21 +96,11 @@ namespace BigSchool.Controllers
                 Time = course.DateTime.ToString("HH:mm"),
                 Category = course.CategoryId,
                 Place = course.Place,
-                Heading = "Add Course",
+                Heading = "Edit Course",
                 Id  = course.Id
             };
             return View("Create", viewModel);
-        }
-
-        public ActionResult Create()
-        {
-            var viewModel = new CourseViewModel
-            {
-                Categories = _dbContext.Categories.ToList(),
-                Heading = "Add Course"
-            };
-            return View(viewModel);
-        }
+        }       
 
         [Authorize]
         [HttpPost]
