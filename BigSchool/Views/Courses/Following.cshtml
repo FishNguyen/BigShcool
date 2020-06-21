@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BigSchool.Models.Course>
+﻿@model IEnumerable<BigSchool.Models.ApplicationUser>
 
 
 @{
@@ -13,7 +13,7 @@
     @foreach (var viewModel in @Model)
     {
         <li>
-            <span style="font-weight:bold">@viewModel.Lecturer.Name</span>
+            <span style="font-weight:bold">@viewModel.Name</span>
             <button class="btn btn-info btn-sm js-toggle-follow" data-user-id="@viewModel.Id">
                 Following
             </button>
